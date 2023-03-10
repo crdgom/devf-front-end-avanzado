@@ -10,6 +10,8 @@
   .izquierdo {
     background-color: #333333;
     width: 50%;
+    height: 100vh;
+    overflow-y: scroll;
   }
   
   .derecho {

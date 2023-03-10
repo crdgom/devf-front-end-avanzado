@@ -12,7 +12,7 @@ const Index = () => {
           <SongList />
         </div>
         <div className='derecho'>
-          <h2>lado derecho</h2>
+          <h2>Song Info</h2>
           <SongDetails />
         </div>
       </SongProvider>
