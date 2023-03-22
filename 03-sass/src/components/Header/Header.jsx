@@ -1,25 +1,56 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import '@/components/header/Header.scss'
 
 const Header = () => {
+  const linkIsActive = (isActive, isPending) => {
+    if (isPending) return 'header__item-link'
+    if (isActive) return 'header__item-link header__item-link--is-active'
+    else return 'header__item-link'
+  }
+
   return (
     <nav className='header'>
-      <Link to='/' className='header__logo'>Logo</Link>
+      <NavLink to='/' className='header__logo'>Logo</NavLink>
       <ul className='header__nav-list'>
         <li className='header__nav-item'>
-          <Link to='/' className='header__item-Link header__item-Link--is-active'>Home</Link>
+          <NavLink
+            to='/'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >
+            Home
+          </NavLink>
         </li>
         <li className='header__nav-item'>
-          <Link to='/Dashboard' className='header__item-Link'>Dashboard</Link>
+          <NavLink
+            to='/Dashboard'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >
+            Dashboard
+          </NavLink>
         </li>
         <li className='header__nav-item'>
-          <Link to='/Secret' className='header__item-Link'>Secret</Link>
+          <NavLink
+            to='/Secret'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >
+            Secret
+          </NavLink>
         </li>
         <li className='header__nav-item'>
-          <Link to='/LogIn' className='header__item-Link'>LogIn</Link>
+          <NavLink
+            to='/LogIn'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >
+            LogIn
+          </NavLink>
         </li>
         <li className='header__nav-item'>
-          <Link to='/SignUp' className='header__item-Link'>SignUp</Link>
+          <NavLink
+            to='/SignUp'
+            className={({ isActive, isPending }) => linkIsActive(isActive, isPending)}
+          >
+            SignUp
+          </NavLink>
         </li>
       </ul>
     </nav>

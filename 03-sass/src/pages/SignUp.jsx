@@ -1,10 +1,20 @@
 import useForm from '@/hooks/useForm'
+import { registerUserService } from '@/services/userServices'
+import { useNavigate } from 'react-router-dom'
 import logo from '@/assets/react.svg'
 import '@/styles/form.css'
 
 const SignUp = () => {
-  const sendData = (data) => {
-    console.log(data)
+  const navigate = useNavigate()
+  const sendData = async (data) => {
+    try {
+      const response = await registerUserService(data)
+      if (response.status === 201) {
+        navigate('/login')
+      }
+    } catch (error) {
+      console.log('Ocurrió un error en signup: ', error.message)
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {
@@ -82,7 +92,7 @@ const SignUp = () => {
           />
           <label htmlFor='password'>Password</label>
         </div>
-        <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign in</button>
+        <button className='w-100 btn btn-lg btn-primary' type='submit'>Sign Up</button>
         <p className='mt-5 mb-3 text-muted'>© 2017–2022</p>
       </form>
     </main>
